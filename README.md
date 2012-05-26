@@ -8,7 +8,7 @@ Require in the standard way you do for a CommonJS module
 
 
 ###Change the prefix and suffix 
-In SoundManager.js, there are two attributes called prefix and suffix. These will be appended to any file you push onto the audioStack. All of my files are in the `app/audio` folder under the `Resources` directory, hence my prefix. All my files are `.wav`, so `.wav` will be attached to all files. Change them as you see fit.
+In SoundManager.js, there are two attributes called prefix and suffix. These will be prepended and appended to any file you push onto the audioStack. All of my files are in the `app/audio` folder under the `Resources` directory, hence my prefix. All my files are `.wav`, so `.wav` will be attached to all files. Change them as you see fit.
 
     ...	
     prefix: Titanium.Filesystem.resourcesDirectory + 'app/audio/',
@@ -17,7 +17,7 @@ In SoundManager.js, there are two attributes called prefix and suffix. These wil
     
 
 ###Add sounds
-To add a sound, simply call `push` with the file name ast the parameter
+To add a sound, simply call `push` with the file name as the parameter (remembering that the prefix and suffix shall be attached)
 
     SM.push('dial-tone');
     => pushes Titanium.Filesystem.resourcesDirectory + 'app/audio/' + 'dial-tone' + '.wav' onto the stack. (add prefix and suffix)
@@ -43,7 +43,7 @@ To stop, call `SM.stop()`. `SM.play()` will start at the beginning of the stack.
 
 
 ###Resetting
-`SM.reset()`
+`SM.reset()` clears the stack and resets the pointer.
 
 
 ###Example
